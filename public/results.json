@@ -129,7 +129,9 @@
    "effort_sensitivity": {
     "p_first": 0.5302,
     "p_top3": 0.9952
-   }
+   },
+   "experiment_p2": 0.22219762202463647,
+   "experiment_n_per_arm": 7487
   },
   {
    "key": "connectivity",
@@ -225,7 +227,9 @@
    "effort_sensitivity": {
     "p_first": 0.3866,
     "p_top3": 0.982
-   }
+   },
+   "experiment_p2": 0.22650734810924986,
+   "experiment_n_per_arm": 12487
   },
   {
    "key": "failure",
@@ -321,7 +325,9 @@
    "effort_sensitivity": {
     "p_first": 0.0828,
     "p_top3": 0.8362
-   }
+   },
+   "experiment_p2": 0.21928474667902378,
+   "experiment_n_per_arm": 5628
   },
   {
    "key": "fit_comfort",
@@ -417,7 +423,9 @@
    "effort_sensitivity": {
     "p_first": 0.0004,
     "p_top3": 0.166
-   }
+   },
+   "experiment_p2": 0.2354803722323589,
+   "experiment_n_per_arm": 78241
   },
   {
    "key": "call_mic",
@@ -513,7 +521,9 @@
    "effort_sensitivity": {
     "p_first": 0.0,
     "p_top3": 0.0206
-   }
+   },
+   "experiment_p2": 0.2389264099198246,
+   "experiment_n_per_arm": 427019
   },
   {
    "key": "charging_case",
@@ -609,7 +619,9 @@
    "effort_sensitivity": {
     "p_first": 0.0,
     "p_top3": 0.0
-   }
+   },
+   "experiment_p2": 0.23608236675507918,
+   "experiment_n_per_arm": 96620
   },
   {
    "key": "battery",
@@ -705,7 +717,9 @@
    "effort_sensitivity": {
     "p_first": 0.0,
     "p_top3": 0.0
-   }
+   },
+   "experiment_p2": 0.23503848789369805,
+   "experiment_n_per_arm": 67888
   },
   {
    "key": "controls",
@@ -801,7 +815,9 @@
    "effort_sensitivity": {
     "p_first": 0.0,
     "p_top3": 0.0
-   }
+   },
+   "experiment_p2": 0.24037357352440333,
+   "experiment_n_per_arm": 2197177
   },
   {
    "key": "anc_noise",
@@ -878,7 +894,9 @@
    "effort_sensitivity": {
     "p_first": 0.0,
     "p_top3": 0.0
-   }
+   },
+   "experiment_p2": 0.24107118875143624,
+   "experiment_n_per_arm": 14481220
   },
   {
    "key": "app_software",
@@ -974,7 +992,9 @@
    "effort_sensitivity": {
     "p_first": 0.0,
     "p_top3": 0.0
-   }
+   },
+   "experiment_p2": 0.24052099604151828,
+   "experiment_n_per_arm": 2896595
   }
  ],
  "experiment": {

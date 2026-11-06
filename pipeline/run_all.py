@@ -122,6 +122,11 @@ def stage_export() -> None:
            "mde_abs": p1 - p2, "mde_rel": (p1 - p2) / p1, "alpha": 0.05, "power": 0.8,
            "n_per_arm_formula": prioritise.n_per_arm(p1, p2),
            "n_per_arm_statsmodels": prioritise.n_per_arm_statsmodels(p1, p2)}
+    # same sizing for every theme, so the spec can pick a different first experiment
+    for t in themes:
+        q2 = p1 - efficacy * t["share"] * (t["p_low_given_pain"] - t["p_low_given_none"])
+        t["experiment_p2"] = q2
+        t["experiment_n_per_arm"] = prioritise.n_per_arm(p1, q2) if p1 - q2 > 1e-4 else None
     out = {
         "generated": date.today().isoformat(),
         "dataset": {"name": "Amazon Reviews 2023 (Electronics), true-wireless earbud subset",
