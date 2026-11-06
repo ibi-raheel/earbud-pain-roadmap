@@ -51,7 +51,7 @@ mkdir -p ../downloads/earbuds
 curl -sL $B/meta_categories/meta_Electronics.jsonl | .venv/bin/python -I pipeline/fetch_filter.py meta ../downloads/earbuds
 curl -sL $B/review_categories/Electronics.jsonl   | .venv/bin/python -I pipeline/fetch_filter.py reviews ../downloads/earbuds
 .venv/bin/python -I run.py score ../downloads/earbuds
-.venv/bin/python -I run.py export
+.venv/bin/python -I run.py export ../downloads/earbuds
 .venv/bin/python -I -m pytest -q tests
 
 # web page

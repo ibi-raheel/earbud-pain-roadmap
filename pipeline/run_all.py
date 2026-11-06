@@ -1,8 +1,8 @@
 """Pipeline entry point.
 
   python -I -m pipeline.run_all score   RAW_DIR   # prepare + models, cache to data/interim
-  python -I -m pipeline.run_all sample            # write the hand-label sample (text stays local)
-  python -I -m pipeline.run_all export            # validate, measure, prioritise -> public/results.json
+  python -I -m pipeline.run_all sample  RAW_DIR   # write the hand-label sample (text stays local)
+  python -I -m pipeline.run_all export  RAW_DIR   # validate, measure, prioritise -> public/results.json
 """
 import json
 import pickle
@@ -19,11 +19,16 @@ from .prepare import prepare
 from .themes import KEYS, LABELS
 
 ROOT = Path(__file__).resolve().parents[1]
-INTERIM = ROOT / "data" / "interim"
 OUT = ROOT / "public" / "results.json"
 
 
+def interim(raw_dir: Path) -> Path:
+    """Intermediate files hold review text, so they live next to the download, not in the repo."""
+    return Path(raw_dir) / "interim"
+
+
 def stage_score(raw_dir: Path) -> None:
+    INTERIM = interim(raw_dir)
     INTERIM.mkdir(parents=True, exist_ok=True)
     d = prepare(raw_dir)
     R, S = d["reviews"], d["sentences"]
@@ -37,7 +42,8 @@ def stage_score(raw_dir: Path) -> None:
                      "Yseed": Yseed, "counts": d["counts"], "topics": disc}, f)
 
 
-def stage_sample() -> None:
+def stage_sample(raw_dir: Path) -> None:
+    INTERIM = interim(raw_dir)
     d = pickle.load(open(INTERIM / "scored.pkl", "rb"))
     R, S, P = d["R"], d["S"], d["P"]
     stars = S["rid"].map(R.set_index("rid")["stars"])
@@ -61,7 +67,8 @@ def stage_sample() -> None:
     print(len(out))
 
 
-def stage_export() -> None:
+def stage_export(raw_dir: Path) -> None:
+    INTERIM = interim(raw_dir)
     d = pickle.load(open(INTERIM / "scored.pkl", "rb"))
     R, S, P, pneg = d["R"].copy(), d["S"], d["P"], d["pneg"]
     key_of = R.set_index("rid")["key"]
@@ -153,6 +160,6 @@ if __name__ == "__main__":
     if stage == "score":
         stage_score(Path(sys.argv[2]))
     elif stage == "sample":
-        stage_sample()
+        stage_sample(Path(sys.argv[2]))
     else:
-        stage_export()
+        stage_export(Path(sys.argv[2]))

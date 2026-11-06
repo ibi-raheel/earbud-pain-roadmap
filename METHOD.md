@@ -122,7 +122,7 @@ formula against the textbook case p1 = 0.65, p2 = 0.85 (70 per arm).
 
 ## 6. Validation
 
-**Hand-labelled set.** 320 sentences drawn by `run.py sample` and labelled manually
+**Hand-labelled set.** 320 sentences drawn by `run.py sample <download dir>` and labelled manually
 against the rubric below, in one pass by one annotator, with stars and model scores hidden:
 
 - 180 random sentences from 1-3 star reviews. This stratum is independent of every model.
