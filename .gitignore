@@ -1,0 +1,8 @@
+node_modules/
+dist/
+data/interim/
+__pycache__/
+.pytest_cache/
+.vercel/
+*.pyc
+.DS_Store

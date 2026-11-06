@@ -1,0 +1,1803 @@
+{
+ "generated": "2026-11-06",
+ "dataset": {
+  "name": "Amazon Reviews 2023 (Electronics), true-wireless earbud subset",
+  "url": "https://amazon-reviews-2023.github.io/",
+  "citation": "Hou, Li, He, Yan, Chen, McAuley. Bridging Language and Items for Retrieval and Recommendation. arXiv:2403.03952, 2024.",
+  "raw": 1091757,
+  "after_exact_dupes": 1078671,
+  "after_text_dupes": 994392,
+  "after_date_and_length": 972896,
+  "items": 9929,
+  "sample_reviews": 120000,
+  "sample_items": 5663,
+  "sample_sentences": 612234
+ },
+ "overall": {
+  "mean_stars": 3.803625,
+  "low_star_share": 0.24151666666666666,
+  "any_pain_share": 0.5351583333333333,
+  "ols_n": 118136,
+  "ols_items": 3799
+ },
+ "lifecycle_bins": [
+  "0-3 mo",
+  "3-6 mo",
+  "6-12 mo",
+  "12-24 mo",
+  "24+ mo"
+ ],
+ "lifecycle_n": [
+  20376,
+  18100,
+  28040,
+  33421,
+  20063
+ ],
+ "themes": [
+  {
+   "key": "sound_quality",
+   "label": "Sound quality",
+   "share": 0.2502083333333333,
+   "share_lo": 0.2372181826607928,
+   "share_hi": 0.26484654446486067,
+   "star_delta": -0.584590846194193,
+   "star_delta_lo": -0.6160436361184892,
+   "star_delta_hi": -0.5531380562698968,
+   "p_low_given_pain": 0.3573022481265612,
+   "p_low_given_none": 0.20287857738260628,
+   "share_of_low_reviews": 0.3701607894555241,
+   "confidence_f1": 0.5142857142857143,
+   "precision": 0.391304347826087,
+   "effort_pm": 4.0,
+   "rice": 1.880607873962212,
+   "lifecycle": [
+    0.27934825284648607,
+    0.2543646408839779,
+    0.2477888730385164,
+    0.2424822716256246,
+    0.23311568559039028
+   ],
+   "by_year": {
+    "2015": 0.3042071197411003,
+    "2016": 0.2772852338734332,
+    "2017": 0.24912721686915235,
+    "2018": 0.2819754546798758,
+    "2019": 0.27044025157232704,
+    "2020": 0.23622356732961244,
+    "2021": 0.24995172440427915,
+    "2022": 0.2494988306047444,
+    "2023": 0.22184760620364127
+   },
+   "time_to_complaint": {
+    "n": 464,
+    "median_months": 2.0,
+    "p25": 1.0,
+    "p75": 6.0,
+    "hist_bins": [
+     "<1",
+     "1-3",
+     "3-6",
+     "6-12",
+     "12-24",
+     "24-48"
+    ],
+    "hist": [
+     113,
+     148,
+     81,
+     69,
+     42,
+     11
+    ]
+   },
+   "top_bigrams": [
+    [
+     "sound quality",
+     8721
+    ],
+    [
+     "battery life",
+     1278
+    ],
+    [
+     "good sound",
+     1076
+    ],
+    [
+     "great sound",
+     857
+    ],
+    [
+     "noise cancellation",
+     553
+    ],
+    [
+     "audio quality",
+     536
+    ],
+    [
+     "volume control",
+     520
+    ],
+    [
+     "sound good",
+     520
+    ]
+   ],
+   "rank": 1,
+   "effort_sensitivity": {
+    "p_first": 0.5302,
+    "p_top3": 0.9952
+   }
+  },
+  {
+   "key": "connectivity",
+   "label": "Pairing and connection drops",
+   "share": 0.147825,
+   "share_lo": 0.14023209241761592,
+   "share_hi": 0.15606567124570356,
+   "star_delta": -0.6324030315204958,
+   "star_delta_lo": -0.6660122782503627,
+   "star_delta_hi": -0.598793784790629,
+   "p_low_given_pain": 0.4145667737752974,
+   "p_low_given_none": 0.21149802955183306,
+   "share_of_low_reviews": 0.25374370298806154,
+   "confidence_f1": 0.5454545454545455,
+   "precision": 0.5625,
+   "effort_pm": 3.0,
+   "rice": 1.6997268751730419,
+   "lifecycle": [
+    0.16617589320769532,
+    0.15408839779005526,
+    0.14907275320970043,
+    0.1419466802309925,
+    0.13158550565717989
+   ],
+   "by_year": {
+    "2015": 0.18878101402373246,
+    "2016": 0.1968816875573219,
+    "2017": 0.17679095098449937,
+    "2018": 0.18054117994972646,
+    "2019": 0.18146503884572698,
+    "2020": 0.1508529203678956,
+    "2021": 0.13092341559494844,
+    "2022": 0.12967758102238558,
+    "2023": 0.11145361718524227
+   },
+   "time_to_complaint": {
+    "n": 294,
+    "median_months": 1.0,
+    "p25": 0.45992115637319314,
+    "p75": 4.0,
+    "hist_bins": [
+     "<1",
+     "1-3",
+     "3-6",
+     "6-12",
+     "12-24",
+     "24-48"
+    ],
+    "hist": [
+     90,
+     95,
+     52,
+     34,
+     23,
+     0
+    ]
+   },
+   "top_bigrams": [
+    [
+     "bluetooth headphones",
+     825
+    ],
+    [
+     "bluetooth connection",
+     813
+    ],
+    [
+     "sound quality",
+     586
+    ],
+    [
+     "stay connected",
+     522
+    ],
+    [
+     "bluetooth earbuds",
+     446
+    ],
+    [
+     "each other",
+     402
+    ],
+    [
+     "ear buds",
+     371
+    ],
+    [
+     "connection issues",
+     364
+    ]
+   ],
+   "rank": 2,
+   "effort_sensitivity": {
+    "p_first": 0.3866,
+    "p_top3": 0.982
+   }
+  },
+  {
+   "key": "failure",
+   "label": "Earbud stops working",
+   "share": 0.10083333333333333,
+   "share_lo": 0.0954720579875908,
+   "share_hi": 0.10677489447061693,
+   "star_delta": -1.5220233474296134,
+   "star_delta_lo": -1.5976757766914504,
+   "star_delta_hi": -1.4463709181677764,
+   "p_low_given_pain": 0.6380165289256199,
+   "p_low_given_none": 0.1970528266913809,
+   "share_of_low_reviews": 0.26637223103995583,
+   "confidence_f1": 0.42105263157894735,
+   "precision": 0.47058823529411764,
+   "effort_pm": 6.0,
+   "rice": 1.0769872809297263,
+   "lifecycle": [
+    0.05869650569297213,
+    0.08005524861878453,
+    0.10164051355206848,
+    0.11609467101522994,
+    0.13582216019538454
+   ],
+   "by_year": {
+    "2015": 0.11003236245954692,
+    "2016": 0.10424946499541425,
+    "2017": 0.11827956989247312,
+    "2018": 0.15777022031642762,
+    "2019": 0.105191762239487,
+    "2020": 0.09413568115714173,
+    "2021": 0.09141466805700382,
+    "2022": 0.10056799198128967,
+    "2023": 0.08351796551391966
+   },
+   "time_to_complaint": {
+    "n": 2676,
+    "median_months": 2.0,
+    "p25": 1.0,
+    "p75": 5.0,
+    "hist_bins": [
+     "<1",
+     "1-3",
+     "3-6",
+     "6-12",
+     "12-24",
+     "24-48"
+    ],
+    "hist": [
+     619,
+     931,
+     494,
+     364,
+     233,
+     35
+    ]
+   },
+   "top_bigrams": [
+    [
+     "stopped working",
+     4255
+    ],
+    [
+     "stopped charging",
+     874
+    ],
+    [
+     "left earbud",
+     523
+    ],
+    [
+     "earbud stopped",
+     511
+    ],
+    [
+     "ear bud",
+     476
+    ],
+    [
+     "stop working",
+     466
+    ],
+    [
+     "quit working",
+     458
+    ],
+    [
+     "right earbud",
+     416
+    ]
+   ],
+   "rank": 3,
+   "effort_sensitivity": {
+    "p_first": 0.0828,
+    "p_top3": 0.8362
+   }
+  },
+  {
+   "key": "fit_comfort",
+   "label": "Fit and comfort",
+   "share": 0.14136666666666667,
+   "share_lo": 0.13443994493992725,
+   "share_hi": 0.15041908617099095,
+   "star_delta": -0.41580894064652013,
+   "star_delta_lo": -0.47850220897648266,
+   "star_delta_hi": -0.3531156723165576,
+   "p_low_given_pain": 0.3148431973591134,
+   "p_low_given_none": 0.22944407779805118,
+   "share_of_low_reviews": 0.18428679870264303,
+   "confidence_f1": 0.5925925925925927,
+   "precision": 0.6153846153846154,
+   "effort_pm": 6.0,
+   "rice": 0.5805582608335448,
+   "lifecycle": [
+    0.15719473890851982,
+    0.13917127071823204,
+    0.14001426533523537,
+    0.14024116573411927,
+    0.13103723271694162
+   ],
+   "by_year": {
+    "2015": 0.209277238403452,
+    "2016": 0.1522470192601651,
+    "2017": 0.13573523250942607,
+    "2018": 0.14180097589827,
+    "2019": 0.1427426316438525,
+    "2020": 0.13241883499724866,
+    "2021": 0.14749160004634457,
+    "2022": 0.14680086869361844,
+    "2023": 0.12744436952124072
+   },
+   "time_to_complaint": {
+    "n": 70,
+    "median_months": 0.8377135348226019,
+    "p25": 0.22996057818659657,
+    "p75": 2.0,
+    "hist_bins": [
+     "<1",
+     "1-3",
+     "3-6",
+     "6-12",
+     "12-24",
+     "24-48"
+    ],
+    "hist": [
+     36,
+     17,
+     5,
+     6,
+     5,
+     1
+    ]
+   },
+   "top_bigrams": [
+    [
+     "sound quality",
+     856
+    ],
+    [
+     "don t",
+     769
+    ],
+    [
+     "ear buds",
+     628
+    ],
+    [
+     "t stay",
+     487
+    ],
+    [
+     "ear tips",
+     446
+    ],
+    [
+     "fit well",
+     430
+    ],
+    [
+     "small ears",
+     394
+    ],
+    [
+     "t fit",
+     376
+    ]
+   ],
+   "rank": 4,
+   "effort_sensitivity": {
+    "p_first": 0.0004,
+    "p_top3": 0.166
+   }
+  },
+  {
+   "key": "call_mic",
+   "label": "Call and microphone quality",
+   "share": 0.057275,
+   "share_lo": 0.053556558582269306,
+   "share_hi": 0.061515963558065455,
+   "star_delta": -0.3037040148658384,
+   "star_delta_lo": -0.36433628186990874,
+   "star_delta_hi": -0.2430717478617681,
+   "p_low_given_pain": 0.3267859741015568,
+   "p_low_given_none": 0.23633615317298257,
+   "share_of_low_reviews": 0.07749637706162446,
+   "confidence_f1": 0.888888888888889,
+   "precision": 0.8,
+   "effort_pm": 4.0,
+   "rice": 0.3865477211431311,
+   "lifecycle": [
+    0.06757950530035335,
+    0.06038674033149171,
+    0.058416547788873036,
+    0.05328984770054756,
+    0.049045506654039776
+   ],
+   "by_year": {
+    "2015": 0.05285868392664509,
+    "2016": 0.05044328951391012,
+    "2017": 0.04957408183214635,
+    "2018": 0.05323081472719207,
+    "2019": 0.06215316315205328,
+    "2020": 0.059625815580536125,
+    "2021": 0.06020932298304561,
+    "2022": 0.05771800868693618,
+    "2023": 0.04604566034100761
+   },
+   "time_to_complaint": {
+    "n": 45,
+    "median_months": 2.0,
+    "p25": 1.0,
+    "p75": 3.0,
+    "hist_bins": [
+     "<1",
+     "1-3",
+     "3-6",
+     "6-12",
+     "12-24",
+     "24-48"
+    ],
+    "hist": [
+     11,
+     21,
+     6,
+     4,
+     2,
+     1
+    ]
+   },
+   "top_bigrams": [
+    [
+     "phone calls",
+     1719
+    ],
+    [
+     "phone call",
+     649
+    ],
+    [
+     "call quality",
+     551
+    ],
+    [
+     "sound quality",
+     367
+    ],
+    [
+     "other end",
+     314
+    ],
+    [
+     "background noise",
+     212
+    ],
+    [
+     "could hear",
+     185
+    ],
+    [
+     "can't hear",
+     180
+    ]
+   ],
+   "rank": 5,
+   "effort_sensitivity": {
+    "p_first": 0.0,
+    "p_top3": 0.0206
+   }
+  },
+  {
+   "key": "charging_case",
+   "label": "Charging case and charging",
+   "share": 0.07944166666666666,
+   "share_lo": 0.07451217733314461,
+   "share_hi": 0.08528645332271644,
+   "star_delta": -0.2278314499981208,
+   "star_delta_lo": -0.2778845131564139,
+   "star_delta_hi": -0.17777838683982775,
+   "p_low_given_pain": 0.36746040071331165,
+   "p_low_given_none": 0.23064806684349173,
+   "share_of_low_reviews": 0.12086812504313021,
+   "confidence_f1": 0.6060606060606061,
+   "precision": 0.625,
+   "effort_pm": 4.0,
+   "rice": 0.2742319713171825,
+   "lifecycle": [
+    0.09560266980761681,
+    0.07458563535911603,
+    0.07924393723252496,
+    0.0756410640016756,
+    0.07401684693216369
+   ],
+   "by_year": {
+    "2015": 0.05285868392664509,
+    "2016": 0.038520330174258634,
+    "2017": 0.03421309872922776,
+    "2018": 0.04909064024841047,
+    "2019": 0.08268590455049944,
+    "2020": 0.08568508765034195,
+    "2021": 0.08384505464797436,
+    "2022": 0.09171399933177414,
+    "2023": 0.08602254118100376
+   },
+   "time_to_complaint": {
+    "n": 374,
+    "median_months": 2.0,
+    "p25": 1.0,
+    "p75": 4.0,
+    "hist_bins": [
+     "<1",
+     "1-3",
+     "3-6",
+     "6-12",
+     "12-24",
+     "24-48"
+    ],
+    "hist": [
+     81,
+     146,
+     74,
+     47,
+     22,
+     4
+    ]
+   },
+   "top_bigrams": [
+    [
+     "charging case",
+     1965
+    ],
+    [
+     "stopped charging",
+     730
+    ],
+    [
+     "battery life",
+     496
+    ],
+    [
+     "ear buds",
+     309
+    ],
+    [
+     "won't charge",
+     262
+    ],
+    [
+     "charging port",
+     257
+    ],
+    [
+     "usb c",
+     254
+    ],
+    [
+     "fully charged",
+     242
+    ]
+   ],
+   "rank": 6,
+   "effort_sensitivity": {
+    "p_first": 0.0,
+    "p_top3": 0.0
+   }
+  },
+  {
+   "key": "battery",
+   "label": "Battery life and fade",
+   "share": 0.100675,
+   "share_lo": 0.09480374694976162,
+   "share_hi": 0.10648550390750713,
+   "star_delta": -0.311460504780728,
+   "star_delta_lo": -0.3585908236643768,
+   "star_delta_hi": -0.26433018589707924,
+   "p_low_given_pain": 0.3572551941064481,
+   "p_low_given_none": 0.22856030912072944,
+   "share_of_low_reviews": 0.148920019322338,
+   "confidence_f1": 0.5882352941176471,
+   "precision": 0.45454545454545453,
+   "effort_pm": 8.0,
+   "rice": 0.23056092881470439,
+   "lifecycle": [
+    0.09678052610914802,
+    0.09668508287292818,
+    0.09932239657631954,
+    0.10167260105921426,
+    0.10845835617803917
+   ],
+   "by_year": {
+    "2015": 0.10248112189859762,
+    "2016": 0.09507795781106695,
+    "2017": 0.08741795838570032,
+    "2018": 0.10912317019074376,
+    "2019": 0.10716487853002836,
+    "2020": 0.10148573225375364,
+    "2021": 0.09747808287954274,
+    "2022": 0.10612261944537253,
+    "2023": 0.08920142568153357
+   },
+   "time_to_complaint": {
+    "n": 352,
+    "median_months": 3.0,
+    "p25": 1.0,
+    "p75": 8.25,
+    "hist_bins": [
+     "<1",
+     "1-3",
+     "3-6",
+     "6-12",
+     "12-24",
+     "24-48"
+    ],
+    "hist": [
+     63,
+     100,
+     57,
+     52,
+     64,
+     16
+    ]
+   },
+   "top_bigrams": [
+    [
+     "battery life",
+     8338
+    ],
+    [
+     "sound quality",
+     724
+    ],
+    [
+     "low battery",
+     463
+    ],
+    [
+     "about hours",
+     441
+    ],
+    [
+     "fully charged",
+     215
+    ],
+    [
+     "good battery",
+     215
+    ],
+    [
+     "charging case",
+     213
+    ],
+    [
+     "full charge",
+     209
+    ]
+   ],
+   "rank": 7,
+   "effort_sensitivity": {
+    "p_first": 0.0,
+    "p_top3": 0.0
+   }
+  },
+  {
+   "key": "controls",
+   "label": "Touch controls",
+   "share": 0.045725,
+   "share_lo": 0.04210105571767926,
+   "share_hi": 0.049399709327862154,
+   "star_delta": -0.022250427944422477,
+   "star_delta_lo": -0.08574018881480922,
+   "star_delta_hi": 0.04123933292596427,
+   "p_low_given_pain": 0.2892290869327501,
+   "p_low_given_none": 0.23923048038214,
+   "share_of_low_reviews": 0.05475812573321372,
+   "confidence_f1": 0.7058823529411764,
+   "precision": 0.8571428571428571,
+   "effort_pm": 2.0,
+   "rice": 0.035908264156190035,
+   "lifecycle": [
+    0.0685119748723989,
+    0.047845303867403315,
+    0.04204707560627675,
+    0.038149666377427366,
+    0.03842894881124458
+   ],
+   "by_year": {
+    "2015": 0.05501618122977346,
+    "2016": 0.047997554264750844,
+    "2017": 0.04189359028068706,
+    "2018": 0.04421114889841786,
+    "2019": 0.04618325317548403,
+    "2020": 0.04472918795692163,
+    "2021": 0.047966631908237745,
+    "2022": 0.047861677246909456,
+    "2023": 0.03901358250650226
+   },
+   "time_to_complaint": {
+    "n": 56,
+    "median_months": 1.1570302233902758,
+    "p25": 0.402431011826544,
+    "p75": 5.0,
+    "hist_bins": [
+     "<1",
+     "1-3",
+     "3-6",
+     "6-12",
+     "12-24",
+     "24-48"
+    ],
+    "hist": [
+     20,
+     14,
+     9,
+     6,
+     6,
+     1
+    ]
+   },
+   "top_bigrams": [
+    [
+     "touch controls",
+     712
+    ],
+    [
+     "volume control",
+     573
+    ],
+    [
+     "touch control",
+     208
+    ],
+    [
+     "power button",
+     198
+    ],
+    [
+     "touch sensitive",
+     144
+    ],
+    [
+     "double tap",
+     137
+    ],
+    [
+     "volume controls",
+     116
+    ],
+    [
+     "play pause",
+     115
+    ]
+   ],
+   "rank": 8,
+   "effort_sensitivity": {
+    "p_first": 0.0,
+    "p_top3": 0.0
+   }
+  },
+  {
+   "key": "anc_noise",
+   "label": "Noise cancelling and transparency",
+   "share": 0.047483333333333336,
+   "share_lo": 0.0424020347850281,
+   "share_hi": 0.052716477959500165,
+   "star_delta": 0.03401040397966727,
+   "star_delta_lo": -0.01538160080321136,
+   "star_delta_hi": 0.0834024087625459,
+   "p_low_given_pain": 0.2593892593892594,
+   "p_low_given_none": 0.24062571083620585,
+   "share_of_low_reviews": 0.050997170657649575,
+   "confidence_f1": 0.16666666666666666,
+   "precision": 0.125,
+   "effort_pm": 5.0,
+   "rice": 0.0,
+   "lifecycle": [
+    0.058500196309383586,
+    0.0443646408839779,
+    0.04807417974322396,
+    0.04643786840609198,
+    0.04002392463739222
+   ],
+   "by_year": {
+    "2015": 0.016181229773462782,
+    "2016": 0.01620299602568022,
+    "2017": 0.013964530093562352,
+    "2018": 0.02099659914239243,
+    "2019": 0.041065482796892344,
+    "2020": 0.04307837434163981,
+    "2021": 0.05874174487313173,
+    "2022": 0.06423321082525894,
+    "2023": 0.05461901550910317
+   },
+   "time_to_complaint": {
+    "n": 15
+   },
+   "top_bigrams": [
+    [
+     "noise cancellation",
+     2209
+    ],
+    [
+     "noise cancelling",
+     1529
+    ],
+    [
+     "noise canceling",
+     1244
+    ],
+    [
+     "background noise",
+     651
+    ],
+    [
+     "sound quality",
+     507
+    ],
+    [
+     "noise cancelation",
+     417
+    ],
+    [
+     "active noise",
+     257
+    ],
+    [
+     "battery life",
+     232
+    ]
+   ],
+   "rank": 9,
+   "effort_sensitivity": {
+    "p_first": 0.0,
+    "p_top3": 0.0
+   }
+  },
+  {
+   "key": "app_software",
+   "label": "App and firmware",
+   "share": 0.02880833333333333,
+   "share_lo": 0.02580192369889739,
+   "share_hi": 0.03181503268472344,
+   "star_delta": 0.17822034633744088,
+   "star_delta_lo": 0.11422165380892053,
+   "star_delta_hi": 0.24221903886596124,
+   "p_low_given_pain": 0.3086491177321377,
+   "p_low_given_none": 0.23952532541636992,
+   "share_of_low_reviews": 0.03681595473052239,
+   "confidence_f1": 0.4444444444444445,
+   "precision": 0.5,
+   "effort_pm": 2.0,
+   "rice": 0.0,
+   "lifecycle": [
+    0.037053396152336084,
+    0.029281767955801105,
+    0.030634807417974322,
+    0.02752760240567308,
+    0.01958829686487564
+   ],
+   "by_year": {
+    "2015": 0.02696871628910464,
+    "2016": 0.039743197798838274,
+    "2017": 0.02737047898338221,
+    "2018": 0.03238207895904185,
+    "2019": 0.03249475890985325,
+    "2020": 0.029242984042135052,
+    "2021": 0.02788398408836365,
+    "2022": 0.027439024390243903,
+    "2023": 0.02283017050380503
+   },
+   "time_to_complaint": {
+    "n": 86,
+    "median_months": 1.5,
+    "p25": 0.9891590013140605,
+    "p75": 6.0,
+    "hist_bins": [
+     "<1",
+     "1-3",
+     "3-6",
+     "6-12",
+     "12-24",
+     "24-48"
+    ],
+    "hist": [
+     22,
+     24,
+     16,
+     12,
+     8,
+     4
+    ]
+   },
+   "top_bigrams": [
+    [
+     "firmware update",
+     147
+    ],
+    [
+     "i'll update",
+     97
+    ],
+    [
+     "updated review",
+     65
+    ],
+    [
+     "sound quality",
+     58
+    ],
+    [
+     "battery life",
+     56
+    ],
+    [
+     "customer service",
+     54
+    ],
+    [
+     "alexa app",
+     49
+    ],
+    [
+     "music app",
+     46
+    ]
+   ],
+   "rank": 10,
+   "effort_sensitivity": {
+    "p_first": 0.0,
+    "p_top3": 0.0
+   }
+  }
+ ],
+ "experiment": {
+  "theme": "sound_quality",
+  "label": "Sound quality",
+  "metric": "share of 1-2 star reviews",
+  "baseline_p1": 0.24151666666666666,
+  "efficacy_assumption": 0.5,
+  "target_p2": 0.22219762202463647,
+  "mde_abs": 0.019319044642030186,
+  "mde_rel": 0.0799905236713692,
+  "alpha": 0.05,
+  "power": 0.8,
+  "n_per_arm_formula": 7487,
+  "n_per_arm_statsmodels": 7488
+ },
+ "validation": {
+  "chosen": "classifier_plus_negativity",
+  "t_theme": 0.4,
+  "t_neg": 0.25,
+  "n_dev": 107,
+  "n_test": 213,
+  "methods": {
+   "keyword_baseline": {
+    "per_theme": {
+     "fit_comfort": {
+      "precision": 0.125,
+      "recall": 0.14285714285714285,
+      "f1": 0.13333333333333333,
+      "support": 14
+     },
+     "battery": {
+      "precision": 0.25,
+      "recall": 0.6666666666666666,
+      "f1": 0.36363636363636365,
+      "support": 6
+     },
+     "charging_case": {
+      "precision": 0.4375,
+      "recall": 0.4117647058823529,
+      "f1": 0.42424242424242425,
+      "support": 17
+     },
+     "connectivity": {
+      "precision": 0.26666666666666666,
+      "recall": 0.47058823529411764,
+      "f1": 0.3404255319148936,
+      "support": 17
+     },
+     "sound_quality": {
+      "precision": 0.3076923076923077,
+      "recall": 0.6666666666666666,
+      "f1": 0.42105263157894735,
+      "support": 12
+     },
+     "anc_noise": {
+      "precision": 0.1875,
+      "recall": 0.75,
+      "f1": 0.3,
+      "support": 4
+     },
+     "call_mic": {
+      "precision": 0.3333333333333333,
+      "recall": 0.125,
+      "f1": 0.18181818181818182,
+      "support": 8
+     },
+     "controls": {
+      "precision": 0.4,
+      "recall": 0.4,
+      "f1": 0.4000000000000001,
+      "support": 10
+     },
+     "failure": {
+      "precision": 0.8,
+      "recall": 0.19047619047619047,
+      "f1": 0.3076923076923077,
+      "support": 21
+     },
+     "app_software": {
+      "precision": 0.4,
+      "recall": 0.4,
+      "f1": 0.4000000000000001,
+      "support": 5
+     }
+    },
+    "micro": {
+     "precision": 0.3006993006993007,
+     "recall": 0.37719298245614036,
+     "f1": 0.3346303501945525
+    }
+   },
+   "seed_lexicon": {
+    "per_theme": {
+     "fit_comfort": {
+      "precision": 0.3793103448275862,
+      "recall": 0.7857142857142857,
+      "f1": 0.5116279069767441,
+      "support": 14
+     },
+     "battery": {
+      "precision": 0.25,
+      "recall": 0.8333333333333334,
+      "f1": 0.3846153846153846,
+      "support": 6
+     },
+     "charging_case": {
+      "precision": 0.5652173913043478,
+      "recall": 0.7647058823529411,
+      "f1": 0.65,
+      "support": 17
+     },
+     "connectivity": {
+      "precision": 0.4230769230769231,
+      "recall": 0.6470588235294118,
+      "f1": 0.5116279069767442,
+      "support": 17
+     },
+     "sound_quality": {
+      "precision": 0.2682926829268293,
+      "recall": 0.9166666666666666,
+      "f1": 0.4150943396226415,
+      "support": 12
+     },
+     "anc_noise": {
+      "precision": 0.125,
+      "recall": 0.5,
+      "f1": 0.2,
+      "support": 4
+     },
+     "call_mic": {
+      "precision": 0.47058823529411764,
+      "recall": 1.0,
+      "f1": 0.6399999999999999,
+      "support": 8
+     },
+     "controls": {
+      "precision": 0.47368421052631576,
+      "recall": 0.9,
+      "f1": 0.6206896551724138,
+      "support": 10
+     },
+     "failure": {
+      "precision": 0.45454545454545453,
+      "recall": 0.47619047619047616,
+      "f1": 0.46511627906976744,
+      "support": 21
+     },
+     "app_software": {
+      "precision": 0.23076923076923078,
+      "recall": 0.6,
+      "f1": 0.33333333333333337,
+      "support": 5
+     }
+    },
+    "micro": {
+     "precision": 0.3672566371681416,
+     "recall": 0.7280701754385965,
+     "f1": 0.4882352941176471
+    }
+   },
+   "seed_lexicon_plus_negativity": {
+    "per_theme": {
+     "fit_comfort": {
+      "precision": 0.8181818181818182,
+      "recall": 0.6428571428571429,
+      "f1": 0.7200000000000001,
+      "support": 14
+     },
+     "battery": {
+      "precision": 0.5,
+      "recall": 0.8333333333333334,
+      "f1": 0.625,
+      "support": 6
+     },
+     "charging_case": {
+      "precision": 0.8,
+      "recall": 0.7058823529411765,
+      "f1": 0.7500000000000001,
+      "support": 17
+     },
+     "connectivity": {
+      "precision": 0.6111111111111112,
+      "recall": 0.6470588235294118,
+      "f1": 0.6285714285714287,
+      "support": 17
+     },
+     "sound_quality": {
+      "precision": 0.4,
+      "recall": 0.6666666666666666,
+      "f1": 0.5,
+      "support": 12
+     },
+     "anc_noise": {
+      "precision": 0.3333333333333333,
+      "recall": 0.25,
+      "f1": 0.28571428571428575,
+      "support": 4
+     },
+     "call_mic": {
+      "precision": 0.6666666666666666,
+      "recall": 1.0,
+      "f1": 0.8,
+      "support": 8
+     },
+     "controls": {
+      "precision": 0.7272727272727273,
+      "recall": 0.8,
+      "f1": 0.761904761904762,
+      "support": 10
+     },
+     "failure": {
+      "precision": 0.47619047619047616,
+      "recall": 0.47619047619047616,
+      "f1": 0.47619047619047616,
+      "support": 21
+     },
+     "app_software": {
+      "precision": 0.25,
+      "recall": 0.2,
+      "f1": 0.22222222222222224,
+      "support": 5
+     }
+    },
+    "micro": {
+     "precision": 0.584,
+     "recall": 0.6403508771929824,
+     "f1": 0.610878661087866
+    }
+   },
+   "classifier_plus_negativity": {
+    "per_theme": {
+     "fit_comfort": {
+      "precision": 0.6153846153846154,
+      "recall": 0.5714285714285714,
+      "f1": 0.5925925925925927,
+      "support": 14
+     },
+     "battery": {
+      "precision": 0.45454545454545453,
+      "recall": 0.8333333333333334,
+      "f1": 0.5882352941176471,
+      "support": 6
+     },
+     "charging_case": {
+      "precision": 0.625,
+      "recall": 0.5882352941176471,
+      "f1": 0.6060606060606061,
+      "support": 17
+     },
+     "connectivity": {
+      "precision": 0.5625,
+      "recall": 0.5294117647058824,
+      "f1": 0.5454545454545455,
+      "support": 17
+     },
+     "sound_quality": {
+      "precision": 0.391304347826087,
+      "recall": 0.75,
+      "f1": 0.5142857142857143,
+      "support": 12
+     },
+     "anc_noise": {
+      "precision": 0.125,
+      "recall": 0.25,
+      "f1": 0.16666666666666666,
+      "support": 4
+     },
+     "call_mic": {
+      "precision": 0.8,
+      "recall": 1.0,
+      "f1": 0.888888888888889,
+      "support": 8
+     },
+     "controls": {
+      "precision": 0.8571428571428571,
+      "recall": 0.6,
+      "f1": 0.7058823529411764,
+      "support": 10
+     },
+     "failure": {
+      "precision": 0.47058823529411764,
+      "recall": 0.38095238095238093,
+      "f1": 0.42105263157894735,
+      "support": 21
+     },
+     "app_software": {
+      "precision": 0.5,
+      "recall": 0.4,
+      "f1": 0.4444444444444445,
+      "support": 5
+     }
+    },
+    "micro": {
+     "precision": 0.528,
+     "recall": 0.5789473684210527,
+     "f1": 0.5523012552301256
+    }
+   }
+  },
+  "dev_micro": {
+   "keyword_baseline": {
+    "precision": 0.2833333333333333,
+    "recall": 0.30357142857142855,
+    "f1": 0.29310344827586204
+   },
+   "seed_lexicon": {
+    "precision": 0.37,
+    "recall": 0.6607142857142857,
+    "f1": 0.4743589743589744
+   },
+   "seed_lexicon_plus_negativity": {
+    "precision": 0.5263157894736842,
+    "recall": 0.5357142857142857,
+    "f1": 0.5309734513274336
+   },
+   "classifier_plus_negativity": {
+    "precision": 0.5535714285714286,
+    "recall": 0.5535714285714286,
+    "f1": 0.5535714285714286
+   }
+  },
+  "confusion": {
+   "labels": [
+    "fit_comfort",
+    "battery",
+    "charging_case",
+    "connectivity",
+    "sound_quality",
+    "anc_noise",
+    "call_mic",
+    "controls",
+    "failure",
+    "app_software",
+    "none"
+   ],
+   "matrix": [
+    [
+     8,
+     1,
+     0,
+     0,
+     1,
+     1,
+     0,
+     0,
+     0,
+     0,
+     6
+    ],
+    [
+     2,
+     5,
+     0,
+     0,
+     1,
+     0,
+     0,
+     0,
+     0,
+     0,
+     1
+    ],
+    [
+     0,
+     2,
+     10,
+     2,
+     0,
+     0,
+     0,
+     0,
+     5,
+     0,
+     5
+    ],
+    [
+     1,
+     1,
+     2,
+     9,
+     4,
+     0,
+     0,
+     2,
+     2,
+     0,
+     4
+    ],
+    [
+     0,
+     0,
+     0,
+     1,
+     9,
+     0,
+     0,
+     0,
+     0,
+     0,
+     2
+    ],
+    [
+     0,
+     0,
+     0,
+     0,
+     2,
+     1,
+     0,
+     0,
+     0,
+     0,
+     2
+    ],
+    [
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     8,
+     0,
+     0,
+     0,
+     0
+    ],
+    [
+     1,
+     1,
+     0,
+     1,
+     6,
+     0,
+     0,
+     6,
+     0,
+     0,
+     2
+    ],
+    [
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     8,
+     0,
+     13
+    ],
+    [
+     1,
+     1,
+     0,
+     2,
+     0,
+     0,
+     2,
+     0,
+     0,
+     2,
+     1
+    ],
+    [
+     3,
+     3,
+     5,
+     4,
+     5,
+     6,
+     0,
+     1,
+     2,
+     2,
+     84
+    ]
+   ]
+  }
+ },
+ "topics": [
+  {
+   "topic": 19,
+   "top_terms": [
+    "pair",
+    "earbuds",
+    "headphones",
+    "just",
+    "phone",
+    "like",
+    "use",
+    "bought",
+    "time",
+    "bluetooth"
+   ],
+   "share": 0.3731,
+   "theme": "connectivity"
+  },
+  {
+   "topic": 0,
+   "top_terms": [
+    "quality",
+    "sound",
+    "sound quality",
+    "poor",
+    "poor quality",
+    "quality good",
+    "poor sound",
+    "terrible",
+    "quality great",
+    "bad"
+   ],
+   "share": 0.058,
+   "theme": "sound_quality"
+  },
+  {
+   "topic": 15,
+   "top_terms": [
+    "product",
+    "terrible",
+    "bad",
+    "terrible product",
+    "good product",
+    "defective",
+    "purchase",
+    "great product",
+    "recommend product",
+    "bad product"
+   ],
+   "share": 0.0524,
+   "theme": "failure"
+  },
+  {
+   "topic": 18,
+   "top_terms": [
+    "ears",
+    "stay",
+    "stay ears",
+    "fit",
+    "fall",
+    "don stay",
+    "won stay",
+    "won",
+    "stay ear",
+    "small"
+   ],
+   "share": 0.0503,
+   "theme": "fit_comfort"
+  },
+  {
+   "topic": 7,
+   "top_terms": [
+    "work",
+    "doesn",
+    "doesn work",
+    "didn",
+    "didn work",
+    "did",
+    "did work",
+    "does work",
+    "does",
+    "don work"
+   ],
+   "share": 0.0502,
+   "theme": "other"
+  },
+  {
+   "topic": 17,
+   "top_terms": [
+    "earbud",
+    "right",
+    "left",
+    "left earbud",
+    "right earbud",
+    "charging",
+    "earbud stopped",
+    "works",
+    "worked",
+    "volume"
+   ],
+   "share": 0.0486,
+   "theme": "sound_quality"
+  },
+  {
+   "topic": 13,
+   "top_terms": [
+    "ear",
+    "bud",
+    "ear bud",
+    "left ear",
+    "right ear",
+    "left",
+    "right",
+    "piece",
+    "stay ear",
+    "ear piece"
+   ],
+   "share": 0.0405,
+   "theme": "other"
+  },
+  {
+   "topic": 10,
+   "top_terms": [
+    "charge",
+    "won",
+    "won charge",
+    "hold",
+    "hold charge",
+    "case",
+    "turn",
+    "charging",
+    "doesn",
+    "longer"
+   ],
+   "share": 0.0386,
+   "theme": "battery"
+  },
+  {
+   "topic": 8,
+   "top_terms": [
+    "good",
+    "sound good",
+    "good sound",
+    "sound",
+    "quality good",
+    "pretty good",
+    "pretty",
+    "good product",
+    "fit",
+    "price"
+   ],
+   "share": 0.0361,
+   "theme": "sound_quality"
+  },
+  {
+   "topic": 4,
+   "top_terms": [
+    "battery",
+    "life",
+    "battery life",
+    "hours",
+    "life good",
+    "short",
+    "poor",
+    "poor battery",
+    "good battery",
+    "terrible"
+   ],
+   "share": 0.036,
+   "theme": "battery"
+  },
+  {
+   "topic": 16,
+   "top_terms": [
+    "months",
+    "lasted",
+    "use",
+    "lasted months",
+    "working months",
+    "worked",
+    "broke",
+    "died",
+    "months use",
+    "couple months"
+   ],
+   "share": 0.0321,
+   "theme": "failure"
+  },
+  {
+   "topic": 2,
+   "top_terms": [
+    "working",
+    "stopped",
+    "stopped working",
+    "working months",
+    "month",
+    "working month",
+    "weeks",
+    "just stopped",
+    "stopped charging",
+    "earbud stopped"
+   ],
+   "share": 0.0318,
+   "theme": "failure"
+  },
+  {
+   "topic": 9,
+   "top_terms": [
+    "great",
+    "worked",
+    "worked great",
+    "sound great",
+    "great sound",
+    "sound",
+    "quality great",
+    "fit",
+    "work great",
+    "great months"
+   ],
+   "share": 0.0309,
+   "theme": "sound_quality"
+  },
+  {
+   "topic": 5,
+   "top_terms": [
+    "buds",
+    "ear buds",
+    "ear",
+    "case",
+    "charging",
+    "better",
+    "galaxy",
+    "galaxy buds",
+    "ve",
+    "worst"
+   ],
+   "share": 0.0221,
+   "theme": "charging_case"
+  },
+  {
+   "topic": 6,
+   "top_terms": [
+    "buy",
+    "don buy",
+    "buy product",
+    "dont buy",
+    "wouldn buy",
+    "dont",
+    "brand",
+    "buy headphones",
+    "wouldn",
+    "buy brand"
+   ],
+   "share": 0.0201,
+   "theme": "other"
+  },
+  {
+   "topic": 14,
+   "top_terms": [
+    "don",
+    "don buy",
+    "don waste",
+    "don work",
+    "don stay",
+    "know",
+    "don know",
+    "like",
+    "don recommend",
+    "don like"
+   ],
+   "share": 0.0193,
+   "theme": "other"
+  },
+  {
+   "topic": 3,
+   "top_terms": [
+    "money",
+    "waste",
+    "waste money",
+    "don waste",
+    "save money",
+    "save",
+    "worth money",
+    "waste time",
+    "time",
+    "dont waste"
+   ],
+   "share": 0.0191,
+   "theme": "other"
+  },
+  {
+   "topic": 1,
+   "top_terms": [
+    "disappointed",
+    "really disappointed",
+    "really",
+    "disappointed product",
+    "extremely disappointed",
+    "extremely",
+    "super disappointed",
+    "disappointed purchase",
+    "super",
+    "pretty disappointed"
+   ],
+   "share": 0.0151,
+   "theme": "other"
+  },
+  {
+   "topic": 11,
+   "top_terms": [
+    "worth",
+    "worth money",
+    "money",
+    "price",
+    "worth price",
+    "cheap",
+    "just",
+    "paid",
+    "cost",
+    "definitely"
+   ],
+   "share": 0.0151,
+   "theme": "other"
+  },
+  {
+   "topic": 12,
+   "top_terms": [
+    "recommend",
+    "wouldn recommend",
+    "wouldn",
+    "don recommend",
+    "recommend product",
+    "buying",
+    "definitely",
+    "recommend buying",
+    "purchase",
+    "definitely recommend"
+   ],
+   "share": 0.0106,
+   "theme": "other"
+  }
+ ]
+}
