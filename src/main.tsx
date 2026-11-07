@@ -1,7 +1,7 @@
 import { StrictMode, useEffect, useState } from 'react'
 import { createRoot } from 'react-dom/client'
 import './styles.css'
-import { Results, fmt, useResults } from './data'
+import { Results, SHORT, fmt, stars, useResults } from './data'
 import { StepExperiment, StepKnow, StepModel, StepPile, StepRoadmap, StepStars, StepWall } from './steps'
 import { Pin } from './ui'
 
@@ -65,6 +65,9 @@ function Rail({ active, progress }: { active: number; progress: number }) {
 }
 
 function Hero({ d }: { d: Results }) {
+  const byStars = [...d.themes].sort((a, b) => a.star_delta - b.star_delta)
+  const [worst, next] = byStars
+  const top3 = [...d.themes].sort((a, b) => a.rank - b.rank).slice(0, 3)
   return (
     <header className="hero">
       <div className="hero-note">
@@ -81,6 +84,23 @@ function Hero({ d }: { d: Results }) {
           </svg>
         </a>
       </div>
+      <aside className="answer" aria-label="The short answer">
+        <Pin tone="blue" className="pin-top" />
+        <p className="answer-h">The short answer</p>
+        <ol>
+          <li>
+            A dead earbud costs <b className="num">{stars(worst.star_delta)}</b> stars, {(worst.star_delta / next.star_delta).toFixed(1)}× the
+            next-worst pain.
+          </li>
+          <li>
+            Fix first, by RICE score: <b>{top3.map((t) => SHORT[t.key]).join(', ')}</b>.
+          </li>
+          <li>
+            A test of a {d.experiment.label.toLowerCase()} fix needs <b className="num">{fmt(d.experiment.n_per_arm_formula)}</b> owners
+            per arm.
+          </li>
+        </ol>
+      </aside>
     </header>
   )
 }

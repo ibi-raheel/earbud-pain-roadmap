@@ -70,7 +70,9 @@ export function StepPile({ d }: { d: Results }) {
 
 /* ───────────────────────── 2. Affinity wall ───────────────────────── */
 
-const cleanBigrams = (t: Theme) => t.top_bigrams.filter(([p]) => !/(^|\s)\w(\s|$)|i'll/.test(p)).slice(0, 5)
+// Hide tokenisation fragments ("don t") and phrases that only name the product ("ear buds") or the review itself.
+const NOISE = /(^|\s)\w(\s|$)|i'll|^ear buds?$|^bluetooth (headphones|earbuds)$|^updated review$/
+const cleanBigrams = (t: Theme) => t.top_bigrams.filter(([p]) => !NOISE.test(p)).slice(0, 5)
 
 export function StepWall({ d }: { d: Results }) {
   const byKey = useMemo(() => Object.fromEntries(d.themes.map((t) => [t.key, t])), [d])
@@ -98,7 +100,7 @@ export function StepWall({ d }: { d: Results }) {
       lede={
         <>
           Ten pain clusters. Each square note is 1% of reviews; {pct(d.overall.any_pain_share)} of reviews hold at least one
-          pain. Tap a cluster to read what people actually wrote.
+          pain. Tap a cluster to see the phrases owners use most.
         </>
       }
     >
@@ -150,7 +152,7 @@ export function StepWall({ d }: { d: Results }) {
           <p className="quotes-cap">Phrases owners used most in these complaints</p>
           <ul className="slips">
             {cleanBigrams(t).map(([p, n], i) => (
-              <li key={p} className="slip" style={{ rotate: `${tilt(sel + p, 1.6)}deg`, ['--i' as string]: i }}>
+              <li key={p} className="slip" style={{ rotate: `${tilt(sel + p, 0.9)}deg`, ['--i' as string]: i }}>
                 <span className="slip-text">“{p}”</span>
                 <span className="slip-n num">{fmt(n)} sentences</span>
               </li>
@@ -172,7 +174,7 @@ export function StepWall({ d }: { d: Results }) {
         <p>
           The dataset is a research release with no stated licence, so the page ships only aggregates: phrase counts, not
           review text. Two-word phrases are counted over the sentences flagged for that pain; tokenisation fragments (single
-          letters) are hidden. Groupings on the wall are for reading, not a result.
+          letters) and phrases that only name the product, such as “ear buds”, are hidden. Groupings on the wall are for reading, not a result.
         </p>
         <table className="tbl">
           <thead>
@@ -283,7 +285,7 @@ export function StepModel({ d }: { d: Results }) {
                   <line x1={x(a)} x2={x(b)} y1={y} y2={y} className={better ? 'link up' : 'link down'} />
                   <circle cx={x(a)} cy={y} r={5} className="dot-base" />
                   <circle cx={x(b)} cy={y} r={5.5} className="dot-model" />
-                  <text x={x(Math.max(a, b)) + 10} y={y + 4} className="val">
+                  <text x={better ? x(b) + 10 : x(b) - 10} y={y + 4} className={better ? 'val' : 'val strong'} textAnchor={better ? 'start' : 'end'}>
                     {b.toFixed(2)}
                   </text>
                 </g>
@@ -431,13 +433,25 @@ export function StepStars({ d }: { d: Results }) {
                   <text x={L - 12} y={y + 4} className={top ? 'row-label strong' : 'row-label'} textAnchor="end">
                     {SHORT[t.key]}
                   </text>
+                  <rect
+                    x={Math.min(x(0), x(t.star_delta))}
+                    y={y - 7}
+                    width={Math.abs(x(t.star_delta) - x(0))}
+                    height={14}
+                    className={top ? 'cost-bar top' : 'cost-bar'}
+                  />
                   <line x1={x(t.star_delta_lo)} x2={x(t.star_delta_hi)} y1={y} y2={y} className="ci" />
                   {top ? (
                     <circle cx={x(t.star_delta)} cy={y} r={9} className="sticker" />
                   ) : (
                     <circle cx={x(t.star_delta)} cy={y} r={5} className="dot-model" />
                   )}
-                  <text x={x(t.star_delta_hi) + (top ? 14 : 10)} y={y + 4} className={top ? 'val strong' : 'val'}>
+                  <text
+                    x={t.star_delta < 0 && !top ? x(t.star_delta_lo) - 10 : x(t.star_delta_hi) + (top ? 14 : 10)}
+                    y={y + 4}
+                    className={top ? 'val strong' : 'val'}
+                    textAnchor={t.star_delta < 0 && !top ? 'end' : 'start'}
+                  >
                     {stars(t.star_delta)}
                   </text>
                 </g>
@@ -538,8 +552,8 @@ export function StepRoadmap({ d }: { d: Results }) {
         <Grid d={d} />
         <div className="sheet board">
           <Pin tone="green" className="pin-tr" />
-          <Weights wt={wt} setWt={setWt} isDefault={isDefault} />
           <RankList ranked={ranked} />
+          <Weights wt={wt} setWt={setWt} isDefault={isDefault} />
         </div>
       </div>
       <Details>
@@ -655,9 +669,9 @@ function RankList({ ranked }: { ranked: { t: Theme; s: number }[] }) {
 }
 
 // Label placement to avoid collisions between neighbouring points (layout only).
-const GRID_LABEL: Record<string, { dx: number; dy: number; a: 'start' | 'end' }> = {
-  sound_quality: { dx: 4, dy: -14, a: 'end' },
-  connectivity: { dx: 4, dy: -14, a: 'end' },
+const GRID_LABEL: Record<string, { dx: number; dy: number; a: 'start' | 'end' | 'middle' }> = {
+  sound_quality: { dx: 0, dy: -15, a: 'middle' },
+  connectivity: { dx: 0, dy: -15, a: 'middle' },
   failure: { dx: 13, dy: 4, a: 'start' },
   fit_comfort: { dx: 11, dy: 5, a: 'start' },
   battery: { dx: 9, dy: 17, a: 'start' },
@@ -723,7 +737,8 @@ function Grid({ d }: { d: Results }) {
             const cy = y(I)
             const top3 = t.rank <= 3
             const pos = GRID_LABEL[t.key]
-            const right = pos ? pos.a === 'start' : cx < w * 0.62
+            const anchor = pos ? pos.a : cx < w * 0.62 ? 'start' : 'end'
+            const right = anchor !== 'end'
             const lx = cx + (pos?.dx ?? (right ? 13 : -13))
             const ly = cy + (pos?.dy ?? 4)
             return (
@@ -731,7 +746,7 @@ function Grid({ d }: { d: Results }) {
                 <title>{`${t.label}: ${pct(t.share)} of reviews, ${stars(t.star_delta)} stars, RICE ${t.rice.toFixed(2)}`}</title>
                 <circle cx={cx} cy={cy} r={top3 ? 8 : 5} className={top3 ? 'sticker' : 'dot-model'} />
                 {(top3 || I > 0.2) && (
-                  <text x={lx} y={ly} className={top3 ? 'pt-label strong' : 'pt-label'} textAnchor={right ? 'start' : 'end'}>
+                  <text x={lx} y={ly} className={top3 ? 'pt-label strong' : 'pt-label'} textAnchor={anchor}>
                     {SHORT[t.key]}
                   </text>
                 )}
