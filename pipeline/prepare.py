@@ -45,7 +45,27 @@ def dedupe(df: pd.DataFrame) -> tuple:
 
 
 def prepare(raw_dir: Path, n_sample: int = 120_000) -> dict:
-    df = load_reviews(raw_dir)
+    return prepare_frame(load_reviews(raw_dir), n_sample)
+
+
+def load_jsonl(path: Path) -> pd.DataFrame:
+    """Any review or ticket export in the dataset's own format, one JSON object per line:
+    {parent_asin, user_id, rating, timestamp (ms), title, text}. No product filter."""
+    rows = []
+    with open(path) as f:
+        for line in f:
+            if not line.strip():
+                continue
+            r = json.loads(line)
+            rows.append((str(r["parent_asin"]), str(r["user_id"]), float(r["rating"]), int(r["timestamp"]),
+                         r.get("title") or "", r.get("text") or "", bool(r.get("verified_purchase")),
+                         int(r.get("helpful_vote") or 0)))
+    return pd.DataFrame(rows, columns=["item", "user", "stars", "ts", "title", "text", "verified", "helpful"])
+
+
+def prepare_frame(df: pd.DataFrame, n_sample: int = 120_000) -> dict:
+    """Post-load half: dedupe, date and length filter, months since first review, sampling,
+    sentence split. n_sample=None keeps every review."""
     df, counts = dedupe(df)
     df["date"] = pd.to_datetime(df["ts"], unit="ms")
     df = df[(df["date"] >= "2015-01-01")]
@@ -57,7 +77,7 @@ def prepare(raw_dir: Path, n_sample: int = 120_000) -> dict:
     df["months_since_first"] = ((df["date"] - first).dt.days / 30.44).astype(float)
     counts["items"] = int(df["item"].nunique())
     rng = np.random.default_rng(SEED)
-    if len(df) > n_sample:
+    if n_sample is not None and len(df) > n_sample:
         df = df.iloc[rng.choice(len(df), n_sample, replace=False)]
     df = df.reset_index(drop=True)
     df["rid"] = np.arange(len(df))

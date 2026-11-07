@@ -971,3 +971,94 @@ export function StepKnow({ d }: { d: Results }) {
     </Step>
   )
 }
+
+/* ───────────────────────── 8. The solution ───────────────────────── */
+
+// Decision rules, mirrored from pipeline/triage.py (thresholds stated in SOLUTION.md).
+const FIRMWARE = new Set(['connectivity', 'sound_quality', 'controls', 'app_software'])
+function decide(t: Theme) {
+  const life = t.lifecycle
+  const ageRatio = life[0] > 0 ? life[life.length - 1] / life[0] : 0
+  const nonGoal = t.star_delta_hi >= 0
+  return {
+    nonGoal,
+    fixFirst: !nonGoal && t.rank <= 3 && t.effort_sensitivity.p_top3 >= 0.8,
+    gate: !nonGoal && ageRatio >= 1.5,
+    verify: t.precision < 0.45,
+  }
+}
+
+export function StepSolution({ d }: { d: Results }) {
+  const ranked = [...d.themes].sort((a, b) => a.rank - b.rank)
+  const v = d.validation
+  const f1 = v.methods[v.chosen].micro.f1
+  const kw = v.methods.keyword_baseline.micro.f1
+  const queue = ranked.filter((t) => decide(t).fixFirst)
+  const nonGoals = ranked.filter((t) => decide(t).nonGoal)
+  const recipe = [
+    'Pull one product’s reviews or tickets.',
+    `Tag pains with the checked model (F1 ${f1.toFixed(2)} vs ${kw.toFixed(2)} keyword).`,
+    'Measure reach, stars lost within the same model, and change with age.',
+    'Decide: Fix first · Gate before launch · Non-goal · Watch.',
+    'Prove it with a sized holdout: OTA for firmware, build cohorts for hardware.',
+  ]
+  return (
+    <Step
+      id="solution"
+      n={8}
+      title="The solution: a field-pain triage recipe"
+      lede="Same pipeline, packaged so any team can run it on its own complaints."
+    >
+      <div className="solve">
+        <div className="sheet card lined">
+          <Pin className="pin-tl" />
+          <h3 className="card-h">The recipe</h3>
+          <ol className="recipe">
+            {recipe.map((r) => (
+              <li key={r}>{r}</li>
+            ))}
+          </ol>
+        </div>
+        <div className="sheet card runit">
+          <Pin tone="green" className="pin-tr" />
+          <h3 className="card-h">Run it</h3>
+          <pre className="calc">python -I run.py triage reviews.jsonl</pre>
+          <p className="chart-sub">Output on this page’s reviews:</p>
+          <ul className="queue">
+            {queue.map((t) => {
+              const x = decide(t)
+              const life = t.lifecycle
+              const proof = x.gate
+                ? `${pct(life[0])} → ${pct(life[life.length - 1])} with age`
+                : x.verify
+                  ? `${fmt(t.experiment_n_per_arm)} / arm`
+                  : `${FIRMWARE.has(t.key) ? 'OTA holdout' : 'Build cohort'}, ${fmt(t.experiment_n_per_arm)} / arm`
+              return (
+                <li key={t.key}>
+                  <span className="q-name">{SHORT[t.key]}</span>
+                  <span className="q-tags">
+                    <span className="tag tag-fix">Fix first</span>
+                    {x.gate && <span className="tag tag-gate">Gate before launch</span>}
+                    {x.verify && <span className="tag tag-verify">verify</span>}
+                  </span>
+                  <span className="q-proof num">{proof}</span>
+                </li>
+              )
+            })}
+            <li>
+              <span className="q-name">Non-goals</span>
+              <span className="q-tags">
+                <span className="tag tag-non">Non-goal</span>
+              </span>
+              <span className="q-proof">{nonGoals.map((t) => SHORT[t.key].toLowerCase()).join(', ')}</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <p className="closing">
+        Built on public reviews. On your own support and return data, week one ends with your ranked queue. More at{' '}
+        <a href="https://ibiraheel.com">ibiraheel.com</a>.
+      </p>
+    </Step>
+  )
+}

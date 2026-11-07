@@ -13,10 +13,10 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 
-from . import measure, prioritise, topics, validate
+from . import assemble, measure, prioritise, topics, validate
 from .classify import pain_matrix, score
 from .prepare import prepare
-from .themes import KEYS, LABELS
+from .themes import KEYS
 
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "public" / "results.json"
@@ -82,58 +82,18 @@ def stage_export(raw_dir: Path) -> None:
         pain = pain_matrix(P, pneg, val["t_theme"], val["t_neg"])
     else:
         pain = pain_matrix(d["Yseed"].astype(np.float32), pneg, 0.5, val["t_neg"])
-    rv = pd.DataFrame(pain, columns=KEYS).groupby(S["rid"].to_numpy()).max()
-    R = R.set_index("rid").join(rv).fillna({k: 0 for k in KEYS}).reset_index()
-    R[KEYS] = R[KEYS].astype(int)
-    prev = measure.prevalence(R)
-    imp = measure.star_impact(R)
-    low = measure.low_star_rates(R)
-    life = measure.lifecycle(R)
-    yr = measure.by_year(R)
-    ttc = measure.time_to_complaint(S, pain)
-    grams = measure.top_ngrams(S, pain)
-    f1 = {k: val["methods"][val["chosen"]]["per_theme"][k]["f1"] for k in KEYS}
-    prec = {k: val["methods"][val["chosen"]]["per_theme"][k]["precision"] for k in KEYS}
-    themes = []
-    for k in KEYS:
-        reach = 100 * prev.loc[k, "share"]
-        impact = max(0.0, -imp.loc[k, "coef"])
-        conf = f1[k]
-        eff = prioritise.EFFORT_PM[k]
-        themes.append({
-            "key": k, "label": LABELS[k],
-            "share": prev.loc[k, "share"], "share_lo": prev.loc[k, "lo"], "share_hi": prev.loc[k, "hi"],
-            "star_delta": imp.loc[k, "coef"], "star_delta_lo": imp.loc[k, "lo"], "star_delta_hi": imp.loc[k, "hi"],
-            "p_low_given_pain": low.loc[k, "p_low_given_pain"], "p_low_given_none": low.loc[k, "p_low_given_none"],
-            "share_of_low_reviews": low.loc[k, "share_of_low_reviews"],
-            "confidence_f1": conf, "precision": prec[k], "effort_pm": eff,
-            "rice": prioritise.rice(reach, impact, conf, eff),
-            "lifecycle": [float(life.loc[b, k]) for b in measure.LIFE_LABELS],
-            "by_year": {int(y): float(yr.loc[y, k]) for y in yr.index},
-            "time_to_complaint": ttc[k], "top_bigrams": grams[k],
-        })
-    themes.sort(key=lambda t: -t["rice"])
-    for i, t in enumerate(themes, 1):
-        t["rank"] = i
-    sens = prioritise.effort_sensitivity(themes)
-    for t in themes:
-        t["effort_sensitivity"] = sens[t["key"]]
-    # experiment for the top-ranked theme
-    top = themes[0]
-    p1 = float((R["stars"] <= 2).mean())
+    R = assemble.review_pain(R, S, pain)
     efficacy = 0.5  # ASSUMPTION: the fix removes half of this pain where it occurs
-    reach = top["share"]
-    p2 = p1 - efficacy * reach * (top["p_low_given_pain"] - top["p_low_given_none"])
+    tab = assemble.theme_table(R, S, pain, val["methods"][val["chosen"]]["per_theme"], efficacy=efficacy)
+    themes, p1, imp, life = tab["themes"], tab["p1"], tab["imp"], tab["life"]
+    # experiment card for the top-ranked theme (every theme also carries its own sizing)
+    top = themes[0]
+    p2 = top["experiment_p2"]
     exp = {"theme": top["key"], "label": top["label"], "metric": "share of 1-2 star reviews",
            "baseline_p1": p1, "efficacy_assumption": efficacy, "target_p2": p2,
            "mde_abs": p1 - p2, "mde_rel": (p1 - p2) / p1, "alpha": 0.05, "power": 0.8,
            "n_per_arm_formula": prioritise.n_per_arm(p1, p2),
            "n_per_arm_statsmodels": prioritise.n_per_arm_statsmodels(p1, p2)}
-    # same sizing for every theme, so the spec can pick a different first experiment
-    for t in themes:
-        q2 = p1 - efficacy * t["share"] * (t["p_low_given_pain"] - t["p_low_given_none"])
-        t["experiment_p2"] = q2
-        t["experiment_n_per_arm"] = prioritise.n_per_arm(p1, q2) if p1 - q2 > 1e-4 else None
     out = {
         "generated": date.today().isoformat(),
         "dataset": {"name": "Amazon Reviews 2023 (Electronics), true-wireless earbud subset",

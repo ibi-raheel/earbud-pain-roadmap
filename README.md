@@ -1,8 +1,21 @@
 # Earbud Pain-to-Roadmap
 
-Measures which pains cost true-wireless earbuds the most stars, using 120,000 public reviews.
-The pains are then ranked with RICE, and the top fix gets an experiment sized with a power
-calculation.
+**Question:** Which pains cost wireless earbuds the most stars, which ones grow as a model
+ages, and what should the next model fix first?
+
+**Answer, measured on 120,000 public reviews of 5,663 earbud models:** battery costs 0.31
+stars. An earbud that **stops working costs 1.52 stars**, 2.4 times any other pain, and those
+complaints more than double as a model ages (5.9% of reviews at 0-3 months, 13.6% at 24+
+months). A connectivity firmware fix is the cheapest top-3 bet, and proving it takes 12,487
+owners per arm. Touch controls, noise cancelling and the app cost no measurable stars.
+
+**The solution:** a one-page field-pain triage recipe and a tool that runs it on any team's
+own reviews or tickets and returns a ranked fix queue, with a decision label and a sized test
+for every pain. See **[SOLUTION.md](SOLUTION.md)**.
+
+```bash
+.venv/bin/python -I run.py triage reviews.jsonl --out triage/
+```
 
 **Live demo:** coming soon
 
@@ -29,7 +42,7 @@ Headline: when an earbud **stops working**, the review loses **1.52 stars** comp
 other reviews of the same model. That is 2.4 times any other pain. The median reported time
 to failure is 2 months.
 
-See [METHOD.md](METHOD.md) for the equations, assumptions, validation and limitations, and
+See [SOLUTION.md](SOLUTION.md) for the playbook and the tool, [METHOD.md](METHOD.md) for the equations, assumptions, validation and limitations, and
 [PRODUCT_SPEC.md](PRODUCT_SPEC.md) for the one-page spec the numbers support.
 
 ## How it works
@@ -40,6 +53,8 @@ See [METHOD.md](METHOD.md) for the equations, assumptions, validation and limita
 - `pipeline/measure.py`: item-clustered bootstrap prevalence, OLS with item fixed effects,
   lifecycle curves and stated time to failure.
 - `pipeline/prioritise.py`: RICE, Effort sensitivity, two-proportion sample size.
+- `pipeline/assemble.py`: the per-theme table, shared by the public run and the triage tool.
+- `pipeline/triage.py`: the triage tool: decision rules, `triage.json` and a one-page `triage.md`.
 - Results go to `public/results.json`. The page is static and needs no API keys.
 
 ## Run locally

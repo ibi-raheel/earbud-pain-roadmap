@@ -1,5 +1,16 @@
 # Method
 
+## Research question
+
+Which pains cost wireless earbuds the most stars, which ones grow as a model ages, and what
+should the next model fix first?
+
+Three measures answer it: stars lost within the same model (section 4, impact), pain share by
+model age (section 4, lifecycle) and a RICE ranking whose stability is tested against the
+Effort assumption, with a sized experiment for each pain (section 5). The decision rules that
+turn these into a fix queue, and the tool that applies them to new data, are in
+[SOLUTION.md](SOLUTION.md).
+
 Goal: measure which pains in true-wireless earbuds cost the most rating points, rank them
 with RICE, and size an experiment for the top item. Every number in `public/results.json`
 comes from the pipeline in `pipeline/`. Nothing is typed in by hand except the Effort
@@ -138,7 +149,7 @@ as failure. One-bud dropouts and left-right sync count as connectivity.
 
 | Method | Precision | Recall | F1 |
 |---|---|---|---|
-| Keyword baseline (one or two grep words per theme) | 0.30 | 0.38 | 0.34 |
+| Keyword baseline (one or two grep words per theme) | 0.30 | 0.38 | 0.33 |
 | Seed lexicon alone | 0.37 | 0.73 | 0.49 |
 | Seed lexicon x negativity | 0.58 | 0.64 | 0.61 |
 | **Theme classifier x negativity (chosen on dev)** | 0.53 | 0.58 | 0.55 |
@@ -151,7 +162,7 @@ scores. Per-theme F1 runs from 0.89 (calls and mic) down to 0.17 (noise cancelli
 test positives). Per-theme F1 is the Confidence term in RICE, so weakly validated themes
 are discounted automatically.
 
-**Estimator checks** (`tests/test_pipeline.py`, 15 tests):
+**Estimator checks** (`tests/test_pipeline.py`, 15 tests; `tests/test_triage.py`, 3 more for the triage tool):
 - The fixed-effects OLS recovers planted coefficients (-1.0 and -0.3 stars) on synthetic
   data with item-level quality differences, within 0.05, and the CI covers the truth.
 - Bootstrap CIs bracket the point estimate and recover a planted 10% prevalence.
