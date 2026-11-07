@@ -92,6 +92,9 @@ function Hero({ d }: { d: Results }) {
           Battery costs <b className="num">{Math.abs(battery.star_delta).toFixed(2)}</b>. {list(free.map((t) => NAME[t.key] ?? SHORT[t.key]))}{' '}
           cost nothing measurable.
         </p>
+        <p>
+          <b>The solution:</b> the same method as a triage tool that turns a team’s reviews or tickets into a ranked fix queue.
+        </p>
         <div className="hero-cta">
           <a className="start" href="#solution">
             Here’s the playbook

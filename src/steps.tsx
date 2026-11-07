@@ -1056,7 +1056,8 @@ export function StepSolution({ d }: { d: Results }) {
         </div>
       </div>
       <p className="closing">
-        Built on public reviews. On your own support and return data, week one ends with your ranked queue. More at{' '}
+        Measured on public reviews, not support or return data. The next step is to run it on one product line’s tickets
+        and returns and check whether the same queue holds. More at{' '}
         <a href="https://ibiraheel.com">ibiraheel.com</a>.
       </p>
     </Step>
