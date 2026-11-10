@@ -25,8 +25,9 @@ Citation: Hou, Li, He, Yan, Chen, McAuley. *Bridging Language and Items for Retr
 Recommendation.* arXiv:2403.03952, 2024.
 **Licence:** no licence is stated on the dataset card; it is released for research use.
 This repo ships **only aggregates** (shares, coefficients, counts, frequent bigrams). No
-review text and no reviewer IDs are committed. The hand-label file stores a review key and
-a sentence index; the text is rebuilt locally from the download.
+review text is committed. The hand-label file stores the dataset's own review key (product
+ID, anonymised reviewer ID, timestamp) and a sentence index; the text is rebuilt locally
+from the download.
 
 **Filtering** (`pipeline/fetch_filter.py`). The 5.2 GB item-metadata file and the 22.6 GB
 review file are streamed through a filter, so the full files never touch disk:

@@ -137,7 +137,7 @@ PRODUCT_SPEC.md    one-page spec the numbers support
 
 > Hou, Li, He, Yan, Chen, McAuley. *Bridging Language and Items for Retrieval and Recommendation.* arXiv:2403.03952, 2024.
 
-The dataset card states no licence; it is released for research use. This repo ships only aggregate statistics (shares, coefficients, counts, frequent bigrams). No review text and no reviewer IDs are committed, and the hand-label file stores a review key and sentence index that are resolved against a local download. Nothing is simulated. The code is MIT-licensed; that licence does not extend to the dataset.
+The dataset card states no licence; it is released for research use. This repo ships only aggregate statistics (shares, coefficients, counts, frequent bigrams). No review text is committed. The hand-label file stores, for 320 sentences, the dataset's own review key (product ID, the dataset's anonymised reviewer ID and timestamp), a sentence index and a label; the text is rebuilt from a local download. Nothing is simulated. The code is MIT-licensed; that licence does not extend to the dataset.
 
 ## Limitations
 
