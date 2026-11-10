@@ -68,7 +68,7 @@ and the same non-goals.
     --labels my_labels.csv --out triage/
 
 # re-run the public numbers from the cached scoring (seconds, reproduces results.json)
-.venv/bin/python -I run.py triage ../downloads/earbuds/interim/scored.pkl --out triage/
+.venv/bin/python -I run.py triage ../_downloads/earbud-pain-roadmap/interim/scored.pkl --out triage/
 ```
 
 **Input:** JSONL, one object per line, in the dataset's own review format:

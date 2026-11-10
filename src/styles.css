@@ -1369,6 +1369,11 @@ input[type='range']:active::-webkit-slider-thumb {
 .foot-card p {
   margin: 0 0 10px;
 }
+.code-link {
+  font-family: var(--body);
+  font-weight: 600;
+  font-size: 0.88rem;
+}
 .more {
   font-family: var(--hand);
   font-weight: 700;

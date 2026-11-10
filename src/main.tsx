@@ -142,6 +142,10 @@ function Footer({ d }: { d: Results }) {
         </p>
         <p className="more">
           More work at <a href="https://ibiraheel.com">ibiraheel.com</a>
+          <span className="code-link">
+            {' · '}
+            <a href="https://github.com/ibi-raheel/earbud-pain-roadmap">Code on GitHub</a>
+          </span>
         </p>
       </div>
     </footer>
